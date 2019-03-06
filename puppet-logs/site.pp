@@ -1,4 +1,20 @@
-node "192.168.6.95" { # puppetserver
+node "192.168.6.95" { # puppetmaster
+
+  include 'stdlib'
+  include 'sudo'
+
+  user { 'k8s-admin':
+    ensure     => present,
+    groups     => 'root',
+    shell      => '/bin/bash',
+    home       => '/home/k8s-admin',
+    managehome => true,
+    password   => '!coalizao',
+  }
+
+  sudo::directive { 'k8s-admin':
+    content => "k8s-admin ALL=ALL:ALL \n",
+  }
 
   cron { 'update-manifest':
     command => '/opt/puppetlabs/puppet/bin/r10k deploy environment -pv',
@@ -17,12 +33,12 @@ node "192.168.6.95" { # puppetserver
   }
 
   cron { 'shrink':
-    name        => 'shrink',
-    command     => '/k8s-admin/scripts/shrink.sh',
-    hour        => '0',
-    minute      => '40',
-    user        => 'root',
-    weekday     => '7'
+    name    => 'shrink',
+    command => '/home/k8s-admin/scripts/shrink.sh',
+    hour    => '23',
+    minute  => '00',
+    user    => 'root',
+    weekday => '7'
   }
 
   include logrotate
@@ -44,7 +60,23 @@ node "192.168.6.95" { # puppetserver
   }
 }
 
-node "192.168.6.96" { # puppetserver
+node "192.168.6.96" { # puppetagent
+
+  include 'stdlib'
+  include 'sudo'
+
+  user { 'k8s-admin':
+    ensure     => present,
+    groups     => 'root',
+    shell      => '/bin/bash',
+    home       => '/home/k8s-admin',
+    managehome => true,
+    password   => '!coalizao',
+  }
+
+  sudo::directive { 'k8s-admin':
+    content => "k8s-admin ALL=ALL:ALL \n",
+  }
 
   cron { 'run-puppet':
     command =>
@@ -56,12 +88,12 @@ node "192.168.6.96" { # puppetserver
   }
 
   cron { 'shrink':
-    name        => 'shrink',
-    command     => '/k8s-admin/scripts/shrink.sh',
-    hour        => '0',
-    minute      => '40',
-    user        => 'root',
-    weekday     => '7'
+    name    => 'shrink',
+    command => '/home/k8s-admin/scripts/shrink.sh',
+    hour    => '23',
+    minute  => '00',
+    user    => 'root',
+    weekday => '7'
   }
 
   include logrotate
@@ -83,7 +115,23 @@ node "192.168.6.96" { # puppetserver
   }
 }
 
-node "192.168.6.97" { # puppetserver
+node "192.168.6.97" { # puppetagent
+
+  include 'stdlib'
+  include 'sudo'
+
+  user { 'k8s-admin':
+    ensure     => present,
+    groups     => 'root',
+    shell      => '/bin/bash',
+    home       => '/home/k8s-admin',
+    managehome => true,
+    password   => '!coalizao',
+  }
+
+  sudo::directive { 'k8s-admin':
+    content => "k8s-admin ALL=ALL:ALL \n",
+  }
 
   cron { 'run-puppet':
     command =>
@@ -95,12 +143,12 @@ node "192.168.6.97" { # puppetserver
   }
 
   cron { 'shrink':
-    name        => 'shrink',
-    command     => '/k8s-admin/scripts/shrink.sh',
-    hour        => '0',
-    minute      => '40',
-    user        => 'root',
-    weekday     => '7'
+    name    => 'shrink',
+    command => '/home/k8s-admin/scripts/shrink.sh',
+    hour    => '23',
+    minute  => '00',
+    user    => 'root',
+    weekday => '7'
   }
 
   include logrotate
