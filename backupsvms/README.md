@@ -10,7 +10,7 @@ Descrição dos principais scripts:
 
 Os modelos de configuração de `crontab` estão descritos nos arquivos: `crontab-server-fisico` e `crontab-vms`.
 
-Os scripts auxiliares são descritos em:
+Os scripts auxiliares são descritos a seguir:
 
 - `scpScriptsAndPrepareProd`: script para subir os scripts de producao para o(s) servidore(s) físico(s) e que chama o script de preparação do ambiente de produção `prepareProd.sh`.
 - `prepareProd.sh`: cria e configura as permissões nos diretórios de log e backups.
