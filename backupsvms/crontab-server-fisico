@@ -6,18 +6,18 @@
 # ver logs do crontab: $ grep CRON /var/log/syslog
 
 ## teste
-37 11 * * * /home/alfredo/scripts/backupvms.sh
 35 11 * * * /home/alfredo/scripts/compactvms.sh
+37 11 * * * /home/alfredo/scripts/backupvms.sh
 30 11 * * * /home/alfredo/scripts/deletesnapshots.sh 3
 27 11 * * * /home/alfredo/scripts/createsnapshots.sh
 
 
 ## producao
+## executa todos os dias às 0h00
+00 0 * * * /home/server/scripts/compactvms.sh
 ## executa todos os dias às 1h
-00 1 * * * /home/alfredo/scripts/backupvms.sh
-## executa todos os dias às 0h30
-30 0 * * * /home/alfredo/scripts/compactvms.sh
+00 1 * * * /home/server/scripts/backupvms.sh
 ## executa todos os domingo às 3h
-00 3 * * 0 /home/alfredo/scripts/deletesnapshots.sh 7
+00 3 * * 0 /home/server/scripts/deletesnapshots.sh 7
 ## executa a cada 1h de cada dia
-00 */1 * * * /home/alfredo/scripts/createsnapshots.sh
+00 */1 * * * /home/server/scripts/createsnapshots.sh
