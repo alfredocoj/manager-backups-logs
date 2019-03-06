@@ -1,11 +1,15 @@
 #!/bin/sh
 
+# Esse script deleta os snapshots antigos
 
+# =============== Definicao de variaveis ===============
 LOG_FILE=/var/log/vms/vm-auto-snapshots`date +"%Y-%m-%d"`.log
 DIR_SNAPSHOT_BASE=/var/vmssnapshots/
 DIR_VIRTUAL_BOX=/home/$(whoami)/VirtualBox\ VMs
+names_vms=`VBoxManage list runningvms | sed "s/\"\(.*\)\".*/\1/"`
+# ======================================================
 
-# Deletes old snapshots
+
 usage ()
 {
   echo "usage: $0 [number of snapshots to keep]"
@@ -14,7 +18,7 @@ usage ()
 
 [ -n "$1" ] || usage
 
-names_vms=`VBoxManage list runningvms | sed "s/\"\(.*\)\".*/\1/"`
+
 
 for vm in $names_vms
 do
@@ -35,7 +39,10 @@ done
 
 for vm in $names_vms
 do
-rsync -R $DIR_VIRTUAL_BOX/$vm/Snapshots/*.vdi $DIR_SNAPSHOT_BASE/$vm/
+
+mkdir -p $DIR_SNAPSHOT_BASE/$vm
+
+rsync -r $DIR_VIRTUAL_BOX/$vm/Snapshots/*.vdi $DIR_SNAPSHOT_BASE/$vm/
 done
 
 ## 6 ---> 2
