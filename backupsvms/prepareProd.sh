@@ -1,20 +1,20 @@
 #!/bin/bash
 
-DIR_VMS_BACKUPS=/var/vmbackup
-DIR_VMS_SNAPSHOTS=/var/vmssnapshots
+DIR_VMS_BACKUPS=/vmbackup
+DIR_VMS_SNAPSHOTS=/vmssnapshots
 
-#cp -R ~/IdeaProjects/backups-vms/backupsvms/* /home/$(whoami)/scripts/
+# cp -R ~/IdeaProjects/backups-vms/backupsvms/* /home/$(whoami)/scripts/
 
-#criar usuário linux
-$ sudo useradd -m server
-#Crie a senha:
-$ sudo passwd server
-#Adicione o usuário ao grupo sudo:
-$ sudo usermod -a -G sudo server
-#Altere o shell do usuário:
-$ sudo chsh -s /bin/bash server
-#Adicionar usuário ao grupo root
-sudo usermod -aG root server
+##criar usuário linux
+#$ sudo useradd -m server
+##Crie a senha:
+#$ sudo passwd server
+##Adicione o usuário ao grupo sudo:
+#$ sudo usermod -a -G sudo server
+##Altere o shell do usuário:
+#$ sudo chsh -s /bin/bash server
+##Adicionar usuário ao grupo root
+#sudo usermod -aG root server
 
 sudo chown -R $(whoami):syslog /var/log/vms
 
