@@ -4,7 +4,7 @@ Descrição dos principais scripts:
 
  - `compactvms.sh`: script que compacta às VMs antes do backup, diariamente às 0h00.
  - `backupvms.sh`: script que realiza um export das VMS diariamente às 1h00.
- - `createsnapshots.sh`: script para a criacão das snapshots das VMs que estão em execução diariamente a cada 1h.
+ - `createsnapshots.sh`: script para a criacão das snapshots das VMs que estão em execução diariamente a cada 2h.
  - `deletesnapshots.sh`: script para a remoção das snapshots das VMs que estão em execução todo domingo às 3h, deixando apenas os últimos 7 snapshots.
  - `shrink.sh`: script que deve ser executado em cada VM em uma rotina semanal, a cada 7 dias às 23h, para ser executada via puppet.
 
