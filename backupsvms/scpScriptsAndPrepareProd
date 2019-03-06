@@ -1,0 +1,28 @@
+#!/bin/bash
+
+export servers=( "192.168.6.151" )
+export user=server
+export DIRSCRIPTS=/home/$user/scripts
+export prepareProd=prepareProd.sh
+
+FILES=`find $(pwd) -iname '*.sh' -type f`
+
+for server in "${servers[@]}"
+do
+    cmd="mkdir -p $DIRSCRIPTS";
+    ssh $user@$server eval "$cmd"
+
+    for FILE in $FILES
+    do
+        FILENAME=$(basename $FILE)
+        scp $FILENAME $user@$server:$DIRSCRIPTS/$FILENAME;
+
+        ## executa o prepareProd.sh em producao
+        if [ $FILENAME eq $prepareProd ];
+        then
+            ssh $user@$server $DIRSCRIPTS/$prepareProd
+        fi
+
+    done
+done
+

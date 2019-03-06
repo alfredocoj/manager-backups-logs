@@ -1,0 +1,12 @@
+#!/bin/bash
+
+export user=k8s-admin
+servers=( "192.168.6.95" "192.168.6.96" "192.168.6.97" )
+export DIRSCRIPTS=/home/$user/scripts
+
+FILENAME=./shrink.sh
+
+for server in "${servers[@]}"
+do
+   scp $FILENAME $user@$server:$DIRSCRIPTS/$FILENAME;
+done
