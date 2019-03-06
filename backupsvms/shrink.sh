@@ -30,7 +30,7 @@ zerofree /dev/sda1
 # history -c
 
 
-# Credits to:
+# Baseado em:
 #  - http://vstone.eu/reducing-vagrant-box-size/
 #  - https://github.com/mitchellh/vagrant/issues/343
 #  - https://gist.github.com/adrienbrault/3775253
