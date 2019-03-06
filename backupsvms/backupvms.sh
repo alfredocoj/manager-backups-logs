@@ -8,7 +8,7 @@
 
 # =============== Definicao de variaveis ===============
 
-  EXPORTDIR=/var/vmbackup
+  EXPORTDIR=/vmbackup
   MYMAIL=alfredo.coj@gmail.com
   VBOXMANAGE="/usr/bin/VBoxManage -q"
   LOG_FILE=/var/log/vms/backup_vms_`date +"%Y-%m-%d"`.log
