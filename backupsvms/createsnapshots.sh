@@ -1,11 +1,11 @@
 #!/bin/bash
 
-
+# =============== Definicao de variaveis ===============
 LOG_FILE=/var/log/vms/vm-auto-snapshots`date +"%Y-%m-%d"`.log
 DIR_SNAPSHOT_BASE=/var/vmssnapshots/
 DIR_VIRTUAL_BOX=/home/$(whoami)/VirtualBox\ VMs
-
 names_vms=`VBoxManage list runningvms | sed "s/\"\(.*\)\".*/\1/"`
+# ======================================================
 
 for vm in $names_vms
 do
@@ -35,5 +35,8 @@ fi
 
 for vm in $names_vms
 do
-rsync -R $DIR_VIRTUAL_BOX/$vm/Snapshots/*.vdi $DIR_SNAPSHOT_BASE/$vm/
+
+mkdir -p $DIR_SNAPSHOT_BASE/$vm
+
+rsync -r $DIR_VIRTUAL_BOX/$vm/Snapshots/*.vdi $DIR_SNAPSHOT_BASE/$vm/
 done
