@@ -20,4 +20,4 @@
 ## executa todos os domingo às 3h
 00 3 * * 0 /home/server/scripts/deletesnapshots.sh 7
 ## executa a cada 1h de cada dia
-00 */1 * * * /home/server/scripts/createsnapshots.sh
+00 */2 * * * /home/server/scripts/createsnapshots.sh
