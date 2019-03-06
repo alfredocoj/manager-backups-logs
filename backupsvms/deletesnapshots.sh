@@ -4,7 +4,7 @@
 
 # =============== Definicao de variaveis ===============
 LOG_FILE=/var/log/vms/vm-auto-snapshots`date +"%Y-%m-%d"`.log
-DIR_SNAPSHOT_BASE=/var/vmssnapshots/
+DIR_SNAPSHOT_BASE=/vmssnapshots
 DIR_VIRTUAL_BOX=/home/$(whoami)/VirtualBox\ VMs
 names_vms=`VBoxManage list runningvms | sed "s/\"\(.*\)\".*/\1/"`
 # ======================================================
