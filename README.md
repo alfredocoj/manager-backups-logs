@@ -1,10 +1,10 @@
-#### Gerenciador de backups, snapshot de VMs e de logs com rotação
+#### Backup, VM Snapshot, and Rotate Log Manager
 
-Gerenciamento de backups e snapshots de VMs do Virtualbox utilizando scripts aliados ao rsnapshot linux. Além de script do manifest puppet para gerenciamento e rotação de logs com logrotate linux.
+Managing Virtualbox VM backups and snapshots using scripts allied with rsnapshot linux. In addition to manifest puppet script for logrotate linux log management and rotation.
 
-Também contempla nesse repositório um tutorial de instalação e configuração do rsnapshot.
+Also included in this repository is a tutorial for installing and configuring rsnapshot.
 
-Tecnologias utilizadas:
+Technologies used:
 
 - Virtualbox;
 - rsync;
